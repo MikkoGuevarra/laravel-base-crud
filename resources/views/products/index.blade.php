@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <h1>all products</h1>
-
+            <a href="{{route('products.create')}}" class="btn btn-primary">Add Product</a>
             <table class="table">
                 <thead>
                     <tr>
