@@ -6,7 +6,7 @@
         <div class="col-12">
             <h1>Adding New Products</h1>
 
-            <form method="POST" action="{{route('products.edit', ['product' => $product->id])}}">
+            <form method="POST" action="{{route('products.update', ['product' => $product->id])}}">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
@@ -26,9 +26,22 @@
                 </div>
                 <div class="form-group">
                     <label>Season</label>
-                    <input type="text" name="season"
-                    value="{{$product->season}}" class="form-control">
-                </div>
+                    <select class="form-control" name="season">
+                        <option value="">Choose Season</option>
+                        <option value="summer"
+                            {{$product->season == 'summer' ? 'selected=selected' : ''}}
+                        >Summer</option>
+                        <option value="spring"
+                            {{$product->season == 'spring' ? 'selected=selected' : ''}}
+                        >Spring</option>
+                        <option value="autumn"
+                            {{$product->season == 'autumn' ? 'selected=selected' : ''}}
+                        >Autumn</option>
+                        <option value="winter"
+                            {{$product->season == 'winter' ? 'selected=selected' : ''}}
+                        >Winter</option>
+
+                    </select>
                 <div class="form-group">
                     <label>Size</label>
                     <input type="text" name="size"

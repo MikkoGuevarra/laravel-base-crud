@@ -22,7 +22,14 @@
                 </div>
                 <div class="form-group">
                     <label>Season</label>
-                    <input type="text" name="season" class="form-control">
+                    <select class="form-control" name="season">
+                        <option value="">Choose Season</option>
+                        <option value="summer">Summer</option>
+                        <option value="spring">Spring</option>
+                        <option value="autumn">Autumn</option>
+                        <option value="winter">Winter</option>
+
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Size</label>
