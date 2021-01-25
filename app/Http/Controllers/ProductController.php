@@ -42,7 +42,8 @@ class ProductController extends Controller
         $new_product = new Product();
         $new_product->fill($data);
         $new_product->save();
-        return redirect()->route('products.index');
+        $last_inserted_product = Product::orderBy('id', 'desc')->first();
+        return redirect()->route('products.index', ['product' => $last_inserted_product->id]);
     }
 
     /**
@@ -91,7 +92,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $product->update($data);
-        return redirect()->route('products.index');
+        return redirect()->route('products.show', ['product' => $product->id] );
     }
 
     /**
@@ -100,8 +101,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.index');
+
     }
 }

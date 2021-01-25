@@ -23,11 +23,18 @@
                         <td>{{$product->id}}</td>
                         <td>{{$product->name}}</td>
                         <td>{{$product->color}}</td>
+                        <td>{{$product->size}}</td>
                         <td>&euro;{{ number_format($product->price, 2, ',', ' ')}}</td>
-                        <td>{{$product->price}}</td>
                         <td>
                             <a href="{{route('products.show', ['product' => $product->id])}}" class="btn btn-info">Details</a>
                             <a href="{{route('products.edit', ['product' => $product->id])}}" class="btn btn-warning">Edit</a>
+                            <form method="POST"
+                            class="d-inline-block" action="{{route('products.destroy', ['product' => $product->id])}}">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" class="btn btn-danger" value="delete">
+
+                            </form>
                         </td>
                     </tr>
                     @endforeach
